@@ -1,22 +1,84 @@
-# ScoopUp 🐕 💩 🗑️
-Scoop up after your pup. Make a difference.
+# Turborepo starter
 
-Welcome to Scoopup! We're incentivizing dog owners to clean up pet poop and any wayward poop in their neighborhoods. Join us on our mission to reduce waste and create healthier and safer environments for our local communities. 
+This Turborepo starter is maintained by the Turborepo core team.
 
-## Table of Contents
-1. [About ScoopUp](#about-scoopup)
-2. [Features](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [Contact](#contact)
+## Using this example
 
-## About ScoopUp
-ScoopUp is an app that rewards responsible dog owners for picking up after their pets, bettering their local environments and communities. By using AI and blockchain technology, we reward users with $B3TR tokens for bagging and tagging their dog poop, creating heat maps of poop hotspots that local authorities can use to target areas for future change such as adding more poop bag dispensers, waste receptacles, and sustainable methods of dog waste disposal. Scoop up after your pup. Make a difference.
+Run the following command:
 
-## Features
-- **Eco-Friendly Rewards:** Earn $B3TR tokens for bagging and tagging your dog poop 🐕 💩.
-- **AI Verification:** Our advanced AI ensures genuine sustainable actions.
-- **Global Scalability:** ScoopUp is designed for users worldwide.
-- **Community Engagement:** Gamification elements make sustainability fun and socially rewarding.
-- **Business Insights:** Valuable analytics for businesses to align with consumer demand for sustainability.
+```sh
+npx create-turbo@latest
+```
+
+## What's inside?
+
+This Turborepo includes the following packages/apps:
+
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm dev
+```
+
+### Remote Caching
+
+> [!TIP]
+> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
