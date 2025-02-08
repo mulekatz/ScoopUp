@@ -8,6 +8,7 @@
     "contracts:deploy:solo": "turbo run deploy:solo",
     "contracts:solo-up": "turbo run solo-up",
     "contracts:solo-down": "turbo run solo-down",
+    "postinstall": "npm install --prefix apps/backend",
     "build:backend": "cd apps/backend && npm install && npm run build",
     "build:frontend": "cd apps/frontend && npm install && npm run build"
   },
@@ -17,6 +18,7 @@
     "turbo": "^2.4.0"
   },
   "name": "scoopup",
+  "version": "0.0.1",
   "packageManager": "npm@11.1.0",
   "workspaces": [
     "apps/*",
