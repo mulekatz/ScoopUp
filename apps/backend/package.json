@@ -6,7 +6,7 @@
     "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "dev:prod": "cross-env NODE_ENV=production nodemon",
-    "build": "tsc && tsc-alias && npm run copy-files",
+    "build": "npx tsc && npx tsc-alias && npm run copy-files",
     "copy-files": "cp -r src/swagger dist/",
     "build:tsc": "tsc && tsc-alias",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
