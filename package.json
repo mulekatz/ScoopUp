@@ -8,8 +8,8 @@
     "contracts:deploy:solo": "turbo run deploy:solo",
     "contracts:solo-up": "turbo run solo-up",
     "contracts:solo-down": "turbo run solo-down",
-    "build:backend": "turbo run build --filter=backend",
-    "build:frontend": "turbo run build --filter=frontend"
+    "build:backend": "cd apps/backend && npm install && npm run build",
+    "build:frontend": "cd apps/frontend && npm install && npm run build"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
