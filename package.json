@@ -4,14 +4,19 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "contracts:deploy:solo": "turbo run deploy:solo",
+    "contracts:solo-up": "turbo run solo-up",
+    "contracts:solo-down": "turbo run solo-down",
+    "build:backend": "turbo run build --filter=backend",
+    "build:frontend": "turbo run build --filter=frontend"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "turbo": "^2.4.0"
   },
-  "name": "with-vite",
+  "name": "scoopup",
   "packageManager": "npm@11.1.0",
   "workspaces": [
     "apps/*",

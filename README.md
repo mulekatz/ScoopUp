@@ -1,33 +1,22 @@
-# `Turborepo` Vite starter
+# ScoopUp 🐕 💩 🗑️
+Scoop up after your pup. Make a difference.
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+Welcome to Scoopup! We're incentivizing dog owners to clean up pet poop and any wayward poop in their neighborhoods. Join us on our mission to reduce waste and create healthier and safer environments for our local communities. 
 
-## Using this example
+## Table of Contents
+1. [About ScoopUp](#about-scoopup)
+2. [Features](#features)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [Contact](#contact)
 
-Run the following command:
+## About ScoopUp
+ScoopUp is an app that rewards responsible dog owners for picking up after their pets, bettering their local environments and communities. By using AI and blockchain technology, we reward users with $B3TR tokens for bagging and tagging their dog poop, creating heat maps of poop hotspots that local authorities can use to target areas for future change such as adding more poop bag dispensers, waste receptacles, and sustainable methods of dog waste disposal. Scoop up after your pup. Make a difference.
 
-```sh
-npx create-turbo@latest -e with-vite
-```
-
-## What's inside?
-
-This Turborepo includes the following packages and apps:
-
-### Apps and Packages
-
-- `docs`: a vanilla [vite](https://vitejs.dev) ts app
-- `web`: another vanilla [vite](https://vitejs.dev) ts app
-- `@repo/ui`: a stub component & utility library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: shared `eslint` configurations
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Features
+- **Eco-Friendly Rewards:** Earn $B3TR tokens for bagging and tagging your dog poop 🐕 💩.
+- **AI Verification:** Our advanced AI ensures genuine sustainable actions.
+- **Global Scalability:** ScoopUp is designed for users worldwide.
+- **Community Engagement:** Gamification elements make sustainability fun and socially rewarding.
+- **Business Insights:** Valuable analytics for businesses to align with consumer demand for sustainability.
