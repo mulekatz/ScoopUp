@@ -9,14 +9,25 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    nodePolyfills()
+    nodePolyfills({
+      protocolImports: true  // Wichtig für Web3/VeChain
+    })
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')  // Expliziter Pfad für @ Alias
+      '@': path.resolve(__dirname, './src'),
+      stream: 'stream-browserify',
+      buffer: 'buffer'
     }
   },
+  define: {
+    'process.env': {},
+    global: 'globalThis'
+  },
   build: {
-    outDir: "public"
+    outDir: "public",
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
   }
 })
