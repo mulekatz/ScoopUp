@@ -31,7 +31,7 @@ export default defineConfig({
     global: 'globalThis'
   },
   build: {
-    outDir: "public",
+    outDir: "dist",
     commonjsOptions: {
       transformMixedEsModules: true
     },
@@ -39,7 +39,24 @@ export default defineConfig({
       external: [
         'vite-plugin-node-polyfills/shims/buffer',
         'vite-plugin-node-polyfills/shims/process'
-      ]
+      ],
+      output: {
+        manualChunks: {
+          vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'zustand'
+          ],
+          ui: [
+            '@radix-ui/react-dialog',
+            'lucide-react',
+            'class-variance-authority',
+            'clsx',
+            'tailwind-merge'
+          ]
+        }
+      }
     }
   }
 })
