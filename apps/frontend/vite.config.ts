@@ -10,14 +10,20 @@ export default defineConfig({
     react(),
     tailwindcss(),
     nodePolyfills({
-      protocolImports: true  // Wichtig für Web3/VeChain
+      protocolImports: true,
+      globals: {
+        Buffer: true,
+        global: true,
+        process: true
+      }
     })
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      stream: 'stream-browserify',
-      buffer: 'buffer'
+      buffer: 'vite-plugin-node-polyfills/shims/buffer',
+      process: 'vite-plugin-node-polyfills/shims/process',
+      stream: 'stream-browserify'
     }
   },
   define: {
@@ -28,6 +34,12 @@ export default defineConfig({
     outDir: "public",
     commonjsOptions: {
       transformMixedEsModules: true
+    },
+    rollupOptions: {
+      external: [
+        'vite-plugin-node-polyfills/shims/buffer',
+        'vite-plugin-node-polyfills/shims/process'
+      ]
     }
   }
 })
