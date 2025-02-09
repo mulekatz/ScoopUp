@@ -1,5 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "PORT",
+    "LOG_FORMAT",
+    "LOG_DIR",
+    "OPENAI_API_KEY",
+    "ADMIN_MNEMONIC",
+    "ADMIN_ADDRESS",
+    "TREASURY_ADDRESS",
+    "MAX_FILE_SIZE",
+    "ORIGIN",
+    "CREDENTIALS",
+    "NETWORK_URL",
+    "NETWORK_TYPE",
+    "REWARD_AMOUNT",
+    "NODE_ENV"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
