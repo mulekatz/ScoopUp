@@ -23,7 +23,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "buffer": "vite-plugin-node-polyfills/shims/buffer",
-      "global": "vite-plugin-node-polyfills/shims/global"
+      "global": "vite-plugin-node-polyfills/shims/global",
+      "process": "vite-plugin-node-polyfills/shims/process"
     }
   },
   build: {
@@ -35,7 +36,8 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'vite-plugin-node-polyfills/shims/buffer',
-        'vite-plugin-node-polyfills/shims/global'
+        'vite-plugin-node-polyfills/shims/global',
+        'vite-plugin-node-polyfills/shims/process'
       ]
     }
   },
