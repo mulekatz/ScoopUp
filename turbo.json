@@ -14,15 +14,17 @@
     "NETWORK_URL",
     "NETWORK_TYPE",
     "REWARD_AMOUNT",
-    "NODE_ENV"
+    "NODE_ENV",
+    "VITE_NETWORK",
+    "VITE_NODE_URL",
+    "VITE_BACKEND_URL"
   ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["public/**", "dist/**"]
+      "outputs": ["dist/**", ".next/**", "public/**"]
     },
     "lint": {},
-    "lint:fix": {},
     "dev": {
       "cache": false,
       "persistent": true
@@ -41,6 +43,9 @@
     },
     "solo-down": {
       "cache": false
+    },
+    "start": {
+      "dependsOn": ["build"]
     }
   }
 }
