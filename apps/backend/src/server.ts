@@ -1,4 +1,4 @@
-import { App } from './app';
+import { App } from '@/app';
 import { initializeOpenAI } from './utils/initializeOpenAI';
 import { SubmissionRoute } from './routes/submission.route';
 
@@ -18,7 +18,6 @@ try {
   console.log('Starting server...');
   console.log('Environment:', process.env.NODE_ENV);
   console.log('Current working directory:', process.cwd());
-  console.log('Directory contents:', require('fs').readdirSync('.'));
   
   const app = new App([new SubmissionRoute()]);
   app.listen();

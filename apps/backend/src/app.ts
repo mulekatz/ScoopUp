@@ -32,10 +32,12 @@ export class App {
   }
 
   public listen() {
-    this.app.listen(this.port, () => {
+    const port = typeof this.port === 'string' ? parseInt(this.port, 10) : this.port;
+    
+    this.app.listen(port, '0.0.0.0', () => {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
-      logger.info(`🚀 App listening on the port ${this.port}`);
+      logger.info(`🚀 App listening on the host 0.0.0.0 port ${port}`);
       logger.info(`=================================`);
     });
   }
