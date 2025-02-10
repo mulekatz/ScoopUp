@@ -48,6 +48,15 @@ export class App {
 
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
+    
+    // Handle OPTIONS preflight
+    this.app.options('*', cors({
+      origin: ORIGIN,
+      credentials: CREDENTIALS,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Content-Type', 'Date', 'X-Api-Version', 'Authorization'],
+    }));
+
     this.app.use(
       cors({
         origin: ORIGIN,

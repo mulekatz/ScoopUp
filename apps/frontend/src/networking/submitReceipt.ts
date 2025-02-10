@@ -16,7 +16,8 @@ export const submitReceipt = async (data: ReceiptData): Promise<Response> => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      withCredentials: true
+      withCredentials: true,
+      validateStatus: (status) => status < 500
     });
     return response.data;
   } catch (error) {
