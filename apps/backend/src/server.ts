@@ -1,4 +1,4 @@
-import { App } from '@/app';
+import { App } from './app';
 import { initializeOpenAI } from './utils/initializeOpenAI';
 import { SubmissionRoute } from './routes/submission.route';
 

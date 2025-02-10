@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "TypeScript + Express API Server",
   "scripts": {
+    "build": "swc src -d dist --config-file .swcrc",
     "start": "cross-env NODE_ENV=production node dist/src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "dev:prod": "cross-env NODE_ENV=production nodemon",
-    "build": "mkdir -p dist/src && swc ./src -d dist/src --config-file .swcrc",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
     "lint:fix": "npm run lint -- --fix",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@repo/config-contract": "*",
-    "@swc/cli": "^0.3.9",
-    "@swc/core": "^1.4.2",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.15",
     "@vechain/sdk-core": "^1.0.0-beta.30",
     "@vechain/sdk-network": "^1.0.0-beta.30",
     "cross-env": "^7.0.3",
