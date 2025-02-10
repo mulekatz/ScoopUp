@@ -4,7 +4,7 @@
   "description": "TypeScript + Express API Server",
   "scripts": {
     "build": "swc src -d dist --config-file .swcrc",
-    "start": "cross-env NODE_ENV=production node dist/src/server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "dev:prod": "cross-env NODE_ENV=production nodemon",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
