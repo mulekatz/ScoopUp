@@ -6,7 +6,7 @@
     "start": "cross-env NODE_ENV=production node dist/src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "dev:prod": "cross-env NODE_ENV=production nodemon",
-    "build": "swc ./src -d dist --config-file .swcrc",
+    "build": "mkdir -p dist/src && swc ./src -d dist/src --config-file .swcrc",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
     "lint:fix": "npm run lint -- --fix",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
