@@ -50,33 +50,24 @@ export class App {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(
       cors({
-        origin: "https://scoop-up-frontend.vercel.app", // Direkt eintragen
-        credentials: true,
-        methods: ["GET", "POST", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-      })
-    );
-    this.app.use(hpp());
-    this.app.use(
-      helmet({
-        crossOriginResourcePolicy: { policy: 'cross-origin' },
+        origin: ORIGIN,
+        credentials: CREDENTIALS,
+        methods: ['POST', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        exposedHeaders: ['Content-Range', 'X-Content-Range'],
+        maxAge: 600,
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
       }),
     );
+    this.app.use(hpp());
+
+    this.app.use(helmet());
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
-    
-    this.app.options('*', (req, res) => {
-      res.setHeader("Access-Control-Allow-Origin", "https://scoop-up-frontend.vercel.app");
-      res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-      res.setHeader("Access-Control-Allow-Credentials", "true");
-      res.status(204).end();
-    });
-    
   }
-  
 
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {

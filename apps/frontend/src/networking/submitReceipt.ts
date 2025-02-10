@@ -12,6 +12,7 @@ export type Response = {
 export const submitReceipt = async (data: ReceiptData): Promise<Response> => {
   try {
     const response = await axios.post(`${backendURL}/submitReceipt`, data, {
+      method: "POST",
       headers: {
         'Content-Type': 'application/json',
       },
