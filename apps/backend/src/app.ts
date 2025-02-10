@@ -51,24 +51,15 @@ export class App {
     this.app.use(
       cors({
         origin: ['https://scoop-up-frontend.vercel.app', 'http://localhost:3000'],
-        credentials: true,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-        allowedHeaders: [
-          'Content-Type',
-          'Authorization',
-          'X-Requested-With',
-          'Accept',
-          'Origin'
-        ],
-        exposedHeaders: ['Content-Range', 'X-Content-Range'],
-        maxAge: 86400, // 24 Stunden
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        maxAge: 86400,
       }),
     );
     this.app.use(hpp());
 
     this.app.use(helmet({
       crossOriginResourcePolicy: { policy: 'cross-origin' },
-      crossOriginOpenerPolicy: { policy: 'same-origin' }
     }));
     this.app.use(compression());
     this.app.use(express.json());

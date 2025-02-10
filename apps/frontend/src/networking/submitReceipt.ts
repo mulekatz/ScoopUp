@@ -11,19 +11,13 @@ export type Response = {
 
 export const submitReceipt = async (data: ReceiptData): Promise<Response> => {
   try {
-    const response = await axios.post(`${backendURL}/submitReceipt`, data, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-    });
+    const response = await axios.post(`${backendURL}/submitReceipt`, data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       // Hier fangen wir die Fehlermeldung aus der ErrorMiddleware ab
       throw new Error(error.response.data.message);
     }
-    throw new Error('Ein unerwarteter Fehler ist aufgetreten');
+    throw new Error("Ein unerwarteter Fehler ist aufgetreten");
   }
 };
