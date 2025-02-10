@@ -14,6 +14,8 @@ import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import bodyParser from 'body-parser';
 
+console.log(ORIGIN, CREDENTIALS);
+
 export class App {
   public app: express.Application;
   public env: string;
@@ -57,7 +59,17 @@ export class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
+  
+    this.app.options("/submitReceipt", (req, res) => {
+      res.header("Access-Control-Allow-Origin", "https://scoop-up-frontend.vercel.app");
+      res.header("Access-Control-Allow-Methods", "POST, OPTIONS");
+      res.header("Access-Control-Allow-Headers", "Content-Type");
+      res.header("Access-Control-Allow-Credentials", "true");
+      return res.status(204).end();
+    });
+    
   }
+  
 
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
