@@ -44,6 +44,12 @@
     },
     "compile": {
       "dependsOn": ["build"]
+    },
+    "solo-up": {
+      "cache": false
+    },
+    "solo-down": {
+      "cache": false
     }
   }
 }
