@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "TypeScript + Express API Server",
   "scripts": {
-    "start": "npm run build && cross-env NODE_ENV=production node dist/src/server.js",
+    "start": "NODE_ENV=production node dist/src/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
     "dev:prod": "cross-env NODE_ENV=production nodemon",
     "build": "swc src -d dist --source-maps --copy-files",
@@ -60,7 +60,6 @@
     "@vechain/sdk-core": "^1.0.0-beta.30",
     "@vechain/sdk-network": "^1.0.0-beta.30",
     "axios": "^1.6.7",
-    "cross-env": "^7.0.3",
     "crypto": "^1.0.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
