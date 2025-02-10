@@ -9,18 +9,5 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
       ]
     }
-  ],
-  "routes": [
-    {
-      "src": "/submitReceipt",
-      "methods": ["OPTIONS"],
-      "status": 204,
-      "headers": {
-        "Access-Control-Allow-Origin": "https://scoop-up-frontend.vercel.app",
-        "Access-Control-Allow-Methods": "POST,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Credentials": "true"
-      }
-    }
   ]
 }
