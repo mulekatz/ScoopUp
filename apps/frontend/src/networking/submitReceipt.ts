@@ -13,7 +13,9 @@ export const submitReceipt = async (data: ReceiptData): Promise<Response> => {
   try {
     const response = await axios.post(`${backendURL}/submitReceipt`, data, {
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
       },
       withCredentials: true,
     });
