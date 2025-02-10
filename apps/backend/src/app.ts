@@ -52,17 +52,24 @@ export class App {
       cors({
         origin: ORIGIN,
         credentials: CREDENTIALS,
-        methods: ['POST', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: [
+          'Content-Type',
+          'Authorization',
+          'X-Requested-With',
+          'Accept',
+          'Origin'
+        ],
         exposedHeaders: ['Content-Range', 'X-Content-Range'],
-        maxAge: 600,
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
+        maxAge: 86400, // 24 Stunden
       }),
     );
     this.app.use(hpp());
 
-    this.app.use(helmet());
+    this.app.use(helmet({
+      crossOriginResourcePolicy: { policy: 'cross-origin' },
+      crossOriginOpenerPolicy: { policy: 'same-origin' }
+    }));
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
