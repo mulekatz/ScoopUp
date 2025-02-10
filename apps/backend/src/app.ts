@@ -50,9 +50,11 @@ export class App {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(
       cors({
-        origin: ['https://scoop-up-frontend.vercel.app', 'http://localhost:3000'],
+        origin: ORIGIN,
+        credentials: CREDENTIALS,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        allowedHeaders: ['X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Content-Type', 'Date', 'X-Api-Version', 'Authorization'],
+        exposedHeaders: ['Content-Length', 'X-Requested-With'],
         maxAge: 86400,
       }),
     );
