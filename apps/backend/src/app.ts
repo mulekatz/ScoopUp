@@ -14,8 +14,6 @@ import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import bodyParser from 'body-parser';
 
-console.log(ORIGIN, CREDENTIALS);
-
 export class App {
   public app: express.Application;
   public env: string;
@@ -48,30 +46,18 @@ export class App {
 
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
-    
-    // Handle OPTIONS preflight
-    this.app.options('*', cors({
-      origin: ORIGIN,
-      credentials: CREDENTIALS,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Content-Type', 'Date', 'X-Api-Version', 'Authorization'],
-    }));
-
     this.app.use(
       cors({
         origin: ORIGIN,
         credentials: CREDENTIALS,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['X-CSRF-Token', 'X-Requested-With', 'Accept', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Content-Type', 'Date', 'X-Api-Version', 'Authorization'],
-        exposedHeaders: ['Content-Length', 'X-Requested-With'],
-        maxAge: 86400,
       }),
     );
+
+    console.log(ORIGIN, CREDENTIALS);
+
     this.app.use(hpp());
 
-    this.app.use(helmet({
-      crossOriginResourcePolicy: { policy: 'cross-origin' },
-    }));
+    this.app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
