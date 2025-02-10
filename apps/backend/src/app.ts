@@ -49,8 +49,10 @@ export class App {
     this.app.use(cors({
       origin: ORIGIN,
       credentials: CREDENTIALS,
-      methods: ['POST'],
+      methods: ['POST', 'OPTIONS'],
       allowedHeaders: ['Content-Type'],
+      preflightContinue: false,
+      optionsSuccessStatus: 204
     }));
     this.app.use(hpp());
     this.app.use(helmet({
