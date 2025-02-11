@@ -7,4 +7,8 @@ export const WALLETS = "veworld";
 
 export const backendURL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3000";
 
-export const SUBMISSION_TIMELIMIT = 60 * 1000; // 1 minute
+export const SUBMISSION_TIMELIMIT = {
+  FIRST_TO_SECOND: 10 * 60 * 1000, // 10 Minuten
+  SECOND_TO_THIRD: 60 * 60 * 1000, // 60 Minuten
+  THIRD_TO_SUBMIT: 10 * 60 * 1000, // 10 Minuten
+} as const;
