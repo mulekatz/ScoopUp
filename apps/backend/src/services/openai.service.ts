@@ -2,10 +2,11 @@ import { HttpException } from '@/exceptions/HttpException';
 import { openAIHelper } from '@/server';
 import { isBase64Image } from '@/utils/data';
 import { Service } from 'typedi';
+import { ImageValidationResponse } from '@/interfaces/validationResults.interface';
 
 @Service()
 export class OpenaiService {
-  public async validateImage(firstImage: string, secondImage: string, thirdImage: string): Promise<unknown> {
+  public async validateImage(firstImage: string, secondImage: string, thirdImage: string): Promise<ImageValidationResponse> {
     if (!isBase64Image(firstImage)) throw new HttpException(400, 'Invalid image format');
     if (!isBase64Image(secondImage)) throw new HttpException(400, 'Invalid image format');
     if (!isBase64Image(thirdImage)) throw new HttpException(400, 'Invalid image format');

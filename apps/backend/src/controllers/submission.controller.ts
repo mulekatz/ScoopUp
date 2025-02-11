@@ -21,19 +21,17 @@ export class SubmissionController {
 
       const validationResult = await this.openai.validateImage(body.firstImage, body.secondImage, body.thirdImage);
 
-      if (validationResult == undefined || !('validityFactor' in (validationResult as object))) {
+      if (!validationResult) {
         throw new HttpException(500, 'Error validating image');
       }
 
-      const validityFactor = validationResult['validityFactor'];
-
-      if (validityFactor > 0.5) {
+      if (validationResult.overallValid) {
         if (!(await this.contracts.registerSubmission(submissionRequest))) {
           throw new HttpException(500, 'Error registering submission and sending rewards');
         }
       }
 
-      res.status(200).json({ validation: validationResult });
+      res.status(200).json( validationResult );
     } catch (error) {
       next(error);
       return;

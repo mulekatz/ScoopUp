@@ -5,7 +5,7 @@ interface Props {
   validation: ImageValidationResponse | null;
 }
 
-export const ValidationResult = ({ validation }: Props) => {
+export const ValidationResult = ({validation}: Props) => {
   if (!validation) return null;
 
   const { validityFactors, overallValid } = validation;
@@ -14,11 +14,14 @@ export const ValidationResult = ({ validation }: Props) => {
     if (validityFactors.image1Valid < 0.8) {
       return "The first image doesn't show a clear dog waste. Please ensure it's clearly visible.";
     }
-    if (validityFactors.locationMatch < 0.5) {
-      return "The location before and after cleaning doesn't match. Please photograph the same spot.";
+    if (validityFactors.image2Valid < 0.8) {
+      return "The second image doesn't show a clear dog waste. Please ensure it's clearly visible.";
     }
     if (validityFactors.image3Valid < 0.7) {
       return "The disposal is not clearly visible. Please show clearly how the dog waste is being disposed of.";
+    }
+    if (validityFactors.locationMatch < 0.8) {
+      return "The location before and after cleaning doesn't match. Please photograph the same spot.";
     }
     return "Unfortunately, the images don't meet all requirements. Please try again.";
   };

@@ -13,6 +13,6 @@ export const useSubmission = create<useSubmissionState>((set) => ({
   isLoading: false,
   response: null,
   setIsLoading: (isLoading) => set({ isLoading }),
-  setResponse: (response) => set({ response }),
+  setResponse: (response) => set({ response } ),
   clearAll: () => set({ isLoading: false, response: null }),
 }));
