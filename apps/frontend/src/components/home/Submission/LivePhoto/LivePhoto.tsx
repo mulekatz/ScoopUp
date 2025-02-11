@@ -8,7 +8,8 @@ import { LiaCameraSolid } from "react-icons/lia";
 import { PhotoButton } from "./PhotoButton";
 import SubmitButton from "./SubmitButton/SubmitButton";
 import { ResetButton } from "@/components/home/Submission/Timer";
-
+import { Connect } from "../../Connect";
+import { Overlay } from "./Overlay";
 type FileInputEvent = ChangeEvent<HTMLInputElement>;
 
 export const LivePhoto = () => {
@@ -25,7 +26,6 @@ export const LivePhoto = () => {
     setSecondImage,
     setThirdImage,
     clearImages,
-
   } = useImageStore();
 
   const handleError = (error: unknown) => {
@@ -39,12 +39,6 @@ export const LivePhoto = () => {
             : "Ein unerwarteter Fehler ist aufgetreten",
       },
     });
-  };
-
-  const resetInput = (inputRef: React.RefObject<HTMLInputElement>) => {
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
   };
 
   const handleSubmitAllImages = useCallback(async () => {
@@ -95,28 +89,33 @@ export const LivePhoto = () => {
         if (!file || !account) return;
 
         try {
+          setIsLoading(true);
           const resizedBlob = await resizeImage(file);
           const base64Image = await blobToBase64(resizedBlob as Blob);
 
           switch (imageType) {
             case "first":
               setFirstImage(base64Image);
+              console.log("Erstes Bild gespeichert");
               break;
             case "second":
               setSecondImage(base64Image);
+              console.log("Zweites Bild gespeichert");
               break;
             case "third":
               setThirdImage(base64Image);
+              console.log("Drittes Bild gespeichert");
               break;
           }
         } catch (error) {
+          console.error("Fehler bei der Bildverarbeitung:", error);
           handleError(error);
           clearImages();
-        }
-        finally {
-          resetInput(
-            event.target as unknown as React.RefObject<HTMLInputElement>
-          );
+        } finally {
+          setIsLoading(false);
+          if (event.target) {
+            event.target.value = "";
+          }
         }
       },
     [
@@ -126,6 +125,7 @@ export const LivePhoto = () => {
       setThirdImage,
       clearImages,
       handleError,
+      setIsLoading,
     ]
   );
 
@@ -133,6 +133,16 @@ export const LivePhoto = () => {
     <div className="flex flex-col items-center justify-center gap-12">
       <div className="relative flex flex-col w-fit gap-8">
         <ResetButton />
+        {!account && (
+          <Overlay>
+            <div className="flex flex-col gap-12 items-center justify-center">
+              <h2 className="text-2xl font-bold text-primary-foreground text-center">
+                Please connect your wallet!
+              </h2>
+              <Connect />
+            </div>
+          </Overlay>
+        )}
         <PhotoButton
           type="first"
           icon={LiaCameraSolid}
@@ -157,7 +167,6 @@ export const LivePhoto = () => {
           inputRef={useRef<HTMLInputElement>(null)}
           createHandleCameraCapture={createHandleCameraCapture}
         />
-
       </div>
       <SubmitButton
         handleSubmitAllImages={handleSubmitAllImages}

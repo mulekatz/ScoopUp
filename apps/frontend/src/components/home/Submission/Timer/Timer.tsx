@@ -3,6 +3,7 @@ import { useImageStore } from "@/stores/useImageStore";
 import { SUBMISSION_TIMELIMIT } from "@/config";
 import { cn } from "@/lib/utils";
 import { LiaUndoAltSolid } from "react-icons/lia";
+import { Overlay } from "../LivePhoto/Overlay";
 
 export function Timer() {
   const { timestamp, isExpired, setIsExpired } = useImageStore();
@@ -64,12 +65,20 @@ export const ResetButton = () => {
   if (!isExpired) return null;
 
   return (
-    <button
-      className="absolute flex flex-col gap-4 items-center justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-secondary/20 backdrop-blur-sm text-secondary-foreground p-3 rounded-lg z-10"
-      aria-label="Timer zurücksetzen"
-    >
-      <LiaUndoAltSolid size={96} className="text-primary-foreground cursor-pointer" onClick={handleUndo} />
-      <p className="text-xl font-semibold text-primary-foreground">Time is up!</p>
-    </button>
+    <Overlay>
+      <button
+        className="flex flex-col gap-4 w-full h-full items-center justify-center"
+        aria-label="Timer zurücksetzen"
+      >
+        <LiaUndoAltSolid
+          size={96}
+          className="text-primary-foreground cursor-pointer"
+          onClick={handleUndo}
+        />
+        <p className="text-xl font-semibold text-primary-foreground">
+          Time is up!
+        </p>
+      </button>
+    </Overlay>
   );
 };
