@@ -20,7 +20,6 @@ export class App {
   public port: string | number;
 
   constructor(routes: Routes[]) {
-    console.log(NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS, MAX_FILE_SIZE);
     this.app = express();
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
@@ -33,17 +32,12 @@ export class App {
   }
 
   public listen() {
-    try {
-      const port = this.port || 3000;
-      console.log(`Attempting to listen on port ${port}...`);
-      
-      this.app.listen(Number(port), '0.0.0.0', () => {
-        console.log(`🚀 App listening on the host 0.0.0.0 port ${port}`);
-      });
-    } catch (error) {
-      console.error('Failed to start server:', error);
-      throw error;
-    }
+    this.app.listen(this.port, () => {
+      logger.info(`=================================`);
+      logger.info(`======= ENV: ${this.env} =======`);
+      logger.info(`🚀 App listening on the port ${this.port}`);
+      logger.info(`=================================`);
+    });
   }
 
   public getServer() {
@@ -52,18 +46,9 @@ export class App {
 
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
-    this.app.use(
-      cors({
-        origin: ORIGIN,
-        credentials: CREDENTIALS,
-      }),
-    );
-
-    console.log(ORIGIN, CREDENTIALS);
-
+    this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(hpp());
-
-    this.app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
+    this.app.use(helmet());
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
