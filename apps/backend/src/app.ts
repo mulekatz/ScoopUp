@@ -33,14 +33,17 @@ export class App {
   }
 
   public listen() {
-    const port = typeof this.port === 'string' ? parseInt(this.port, 10) : this.port;
-    
-    this.app.listen(port, '0.0.0.0', () => {
-      logger.info(`=================================`);
-      logger.info(`======= ENV: ${this.env} =======`);
-      logger.info(`🚀 App listening on the host 0.0.0.0 port ${port}`);
-      logger.info(`=================================`);
-    });
+    try {
+      const port = this.port || 3000;
+      console.log(`Attempting to listen on port ${port}...`);
+      
+      this.app.listen(Number(port), '0.0.0.0', () => {
+        console.log(`🚀 App listening on the host 0.0.0.0 port ${port}`);
+      });
+    } catch (error) {
+      console.error('Failed to start server:', error);
+      throw error;
+    }
   }
 
   public getServer() {
