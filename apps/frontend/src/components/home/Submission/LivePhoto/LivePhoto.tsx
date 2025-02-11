@@ -30,15 +30,7 @@ export const LivePhoto = () => {
 
   const handleError = (error: unknown) => {
     console.error("Fehler beim Bildupload:", error);
-    setResponse({
-      validation: {
-        validityFactor: 0,
-        descriptionOfAnalysis:
-          error instanceof Error
-            ? error.message
-            : "Ein unerwarteter Fehler ist aufgetreten",
-      },
-    });
+    setResponse(null);
   };
 
   const handleSubmitAllImages = useCallback(async () => {
