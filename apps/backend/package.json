@@ -9,9 +9,13 @@
     "dev:prod": "cross-env NODE_ENV=production nodemon",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
     "lint:fix": "npm run lint -- --fix",
-
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
-    "deploy:dev": "pm2 start ecosystem.config.js --only dev"
+    "deploy:dev": "pm2 start ecosystem.config.js --only dev",
+
+    "update-app-id": "npx ts-node -r tsconfig-paths/register src/utils/updateAppId.ts",
+    "set-rewards": "npx ts-node -r tsconfig-paths/register src/utils/setRewards.ts",
+    "trigger-cycle": "npx ts-node -r tsconfig-paths/register src/utils/triggerCycle.ts"
+
   },
   "dependencies": {
     "@repo/config-contract": "*",
