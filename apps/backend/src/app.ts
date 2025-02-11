@@ -20,6 +20,7 @@ export class App {
   public port: string | number;
 
   constructor(routes: Routes[]) {
+    console.log(NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS, MAX_FILE_SIZE);
     this.app = express();
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;

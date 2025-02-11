@@ -33,9 +33,15 @@ definitions:
     required:
       - image
     properties:
-      image:
+      firstImage:
         type: string
-        description: image base64
+        description: first image base64
+      secondImage:
+        type: string
+        description: second image base64
+      thirdImage:
+        type: string
+        description: third image base64
       address:
         type: string
         description: User's address

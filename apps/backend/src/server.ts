@@ -15,10 +15,16 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 try {
+  console.log('PORT:', process.env.PORT);
+  console.log('NODE_ENV:', process.env.NODE_ENV);
+  console.log('ORIGIN:', process.env.ORIGIN);
+  console.log('CREDENTIALS:', process.env.CREDENTIALS);
+  console.log('MAX_FILE_SIZE:', process.env.MAX_FILE_SIZE);
+
   console.log('Starting server...');
   console.log('Environment:', process.env.NODE_ENV);
   console.log('Current working directory:', process.cwd());
-  
+
   const app = new App([new SubmissionRoute()]);
   app.listen();
 } catch (error) {
