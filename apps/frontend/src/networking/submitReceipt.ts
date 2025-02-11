@@ -1,15 +1,9 @@
 import axios from "axios";
 import { ReceiptData } from "./type";
 import { backendURL } from "@/config/";
+import { ImageValidationResponse } from "@/components/home/Submission/Validation/ValidationResult";
 
-export type Response = {
-  validation: {
-    validityFactor: number;
-    descriptionOfAnalysis: string;
-  };
-};
-
-export const submitReceipt = async (data: ReceiptData): Promise<Response> => {
+export const submitReceipt = async (data: ReceiptData): Promise<ImageValidationResponse> => {
   try {
     const response = await axios.post(`${backendURL}/api/submitReceipt`, data, {
       headers: {

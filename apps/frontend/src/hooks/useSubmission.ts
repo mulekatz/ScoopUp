@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { Response } from "@/networking";
+import { ImageValidationResponse } from "@/components/home/Submission/Validation/ValidationResult/ValidationResult.types";
 
 interface useSubmissionState {
   isLoading: boolean;
-  response: Response | null;
+  response: ImageValidationResponse | null;
   setIsLoading: (isLoading: boolean) => void;
-  setResponse: (response: Response) => void;
+  setResponse: (response: ImageValidationResponse | null) => void;
   clearAll: () => void;
 }
 
