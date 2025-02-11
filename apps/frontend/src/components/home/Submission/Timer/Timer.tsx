@@ -1,17 +1,25 @@
 import { useEffect, useState, useCallback } from "react";
 import { useImageStore } from "@/stores/useImageStore";
-import { SUBMISSION_TIMELIMIT } from "@/config";
 import { cn } from "@/lib/utils";
 import { LiaUndoAltSolid } from "react-icons/lia";
 import { Overlay } from "../LivePhoto/Overlay";
+import { SUBMISSION_TIMELIMIT } from "@/config";
 
 export function Timer() {
-  const { timestamp, isExpired, setIsExpired } = useImageStore();
+  const { timestamp, isExpired, setIsExpired, firstImage, secondImage, thirdImage } = useImageStore();
   const [timeLeft, setTimeLeft] = useState<number>(0);
 
+  const getCurrentTimeLimit = useCallback(() => {
+    if (!firstImage) return 0;
+    if (!secondImage) return SUBMISSION_TIMELIMIT.FIRST_TO_SECOND;
+    if (!thirdImage) return SUBMISSION_TIMELIMIT.SECOND_TO_THIRD;
+    return SUBMISSION_TIMELIMIT.THIRD_TO_SUBMIT;
+  }, [firstImage, secondImage, thirdImage]);
+
   const calculateTimeLeft = useCallback((currentTimestamp: number) => {
-    return Math.max(0, SUBMISSION_TIMELIMIT - (Date.now() - currentTimestamp));
-  }, []);
+    const timeLimit = getCurrentTimeLimit();
+    return Math.max(0, timeLimit - (Date.now() - currentTimestamp));
+  }, [getCurrentTimeLimit]);
 
   useEffect(() => {
     if (!timestamp) return;
@@ -22,15 +30,12 @@ export function Timer() {
       setIsExpired(newTimeLeft <= 0);
     };
 
-    // Initial calculation
     updateTimer();
-
     const interval = setInterval(updateTimer, 1000);
-
     return () => clearInterval(interval);
   }, [timestamp, calculateTimeLeft, setIsExpired]);
 
-  if (!timestamp) return null;
+  if (!timestamp || !firstImage) return null;
 
   const minutes = Math.floor(timeLeft / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
