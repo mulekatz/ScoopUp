@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: backend
+    rootDir: .
+    buildCommand: |
+      npm run install:backend
+      cd packages/config-contract && npm run build
+      cd ../..
+      cd apps/backend && npm run build
+    startCommand: cd apps/backend && npm start 

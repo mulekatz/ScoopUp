@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "dev": "turbo run dev",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "contracts:compile": "turbo run compile",
+    "contracts:test": "turbo run contracts:test",
+    "contracts:deploy:solo": "turbo run deploy:solo",
+    "contracts:deploy:testnet": "turbo run deploy:testnet",
+    "contracts:solo-up": "turbo run solo-up",
+    "contracts:solo-down": "turbo run solo-down",
+    "install:config-contract": "npm install --include-workspace-root --workspace=packages/config-contract",
+    "install:backend": "npm run install:config-contract && npm install --include-workspace-root --workspace=apps/backend",
+    "install:frontend": "npm install --include-workspace-root --workspace=apps/frontend"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "turbo": "^2.4.0"
+  },
+  "name": "scoopup",
+  "version": "0.0.1",
+  "packageManager": "npm@11.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

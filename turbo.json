@@ -1,0 +1,55 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "PORT",
+    "LOG_FORMAT",
+    "LOG_DIR",
+    "OPENAI_API_KEY",
+    "ADMIN_MNEMONIC",
+    "ADMIN_ADDRESS",
+    "TREASURY_ADDRESS",
+    "MAX_FILE_SIZE",
+    "ORIGIN",
+    "CREDENTIALS",
+    "NETWORK_URL",
+    "NETWORK_TYPE",
+    "REWARD_AMOUNT",
+    "NODE_ENV",
+    "VITE_NETWORK",
+    "VITE_NODE_URL",
+    "VITE_BACKEND_URL"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "lint": {
+      "outputs": []
+    },
+    "deploy:solo": {
+      "dependsOn": ["build"]
+    },
+    "deploy:testnet": {
+      "dependsOn": ["build"]
+    },
+    "compile": {
+      "dependsOn": ["build"]
+    },
+    "solo-up": {
+      "cache": false
+    },
+    "solo-down": {
+      "cache": false
+    }
+  }
+}
