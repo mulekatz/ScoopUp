@@ -2,8 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import { useImageStore } from "@/stores/useImageStore";
 import { cn } from "@/lib/utils";
 import { LiaUndoAltSolid } from "react-icons/lia";
-import { Overlay } from "../LivePhoto/Overlay";
 import { SUBMISSION_TIMELIMIT } from "@/config";
+import { Overlay } from "@/components/ui/overlay";
 
 export function Timer() {
   const { timestamp, isExpired, setIsExpired, firstImage, secondImage, thirdImage } = useImageStore();

@@ -8,8 +8,8 @@ import { LiaCameraSolid } from "react-icons/lia";
 import { PhotoButton } from "./PhotoButton";
 import SubmitButton from "./SubmitButton/SubmitButton";
 import { ResetButton } from "@/components/home/Submission/Timer";
-import { Connect } from "../../Connect";
-import { Overlay } from "./Overlay";
+import { Connect } from "@/components/home/Connect";
+import { Overlay } from "@/components/ui/overlay";
 type FileInputEvent = ChangeEvent<HTMLInputElement>;
 
 export const LivePhoto = () => {
