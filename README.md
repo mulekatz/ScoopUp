@@ -52,6 +52,6 @@ To use ScoopUp, follow these steps:
 For questions or feedback, please contact us at: 
 - **Email:** [scoopup@protonmail.com](mailto:scoopup@protonmail.com).
 - **Twitter:** [@ScoopUp_vet](https://x.com/scoopup_vet).
-- **Website:** [ScoopUp.vet](https://scoopup.vet).
+- **Website:** [ScoopUp.vet](https://scoopup.gitbook.io/scoopup).
 
 Together, let's keep our communities clean and our dogs happy. 🐕 💩 🗑️
