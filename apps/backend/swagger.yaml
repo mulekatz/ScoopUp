@@ -26,28 +26,77 @@ paths:
         500:
           description: 'Server Error'
 
+  /validateImages:
+    post:
+      tags:
+        - validation
+      summary: Validate Images
+      parameters:
+        - name: body
+          in: body
+          description: Image validation data
+          required: true
+          schema:
+            type: object
+            properties:
+              firstImage:
+                type: string
+                description: First image (before) base64
+              secondImage:
+                type: string
+                description: Second image (after) base64
+              thirdImage:
+                type: string
+                description: Third image (disposal) base64
+              step:
+                type: string
+                enum: [first, second, third]
+                description: Validation step
+      responses:
+        200:
+          description: 'Validation successful'
+        400:
+          description: 'Bad Request'
+        500:
+          description: 'Server Error'
+
 # definitions
 definitions:
   submitReceipt:
     type: object
     required:
-      - image
+      - isValid
     properties:
-      firstImage:
-        type: string
-        description: first image base64
-      secondImage:
-        type: string
-        description: second image base64
-      thirdImage:
-        type: string
-        description: third image base64
+      isValid:
+        type: boolean
+        description: Images are valid
       address:
         type: string
         description: User's address
       deviceID:
         type: string
         description: User's device ID
+
+  validateImages:
+    type: object
+    required:
+      - firstImage
+      - secondImage
+      - thirdImage
+    properties:
+      firstImage:
+        type: string
+        description: First image (before) base64
+      secondImage:
+        type: string
+        description: Second image (after) base64
+      thirdImage:
+        type: string
+        description: Third image (disposal) base64
+      step:
+        type: string
+        enum: [first, second, third]
+        description: Validation step
 
 schemes:
   - https

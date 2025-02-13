@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
-import Header from "./components/header";
-import Navigation from "./components/navigation";
+import Header from "./components/layout/Header";
+import Navigation from "./components/layout/Navigation";
 
 export default function Layout() {
   return (

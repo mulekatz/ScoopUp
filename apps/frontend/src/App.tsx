@@ -1,7 +1,7 @@
 import { DAppKitProvider } from "@vechain/dapp-kit-react";
 import { BrowserRouter } from "react-router";
 import { NETWORK, NODE_URL, WALLETS } from "@/config";
-import { SuspenseWrapper } from "@/components/SuspenseWrapper";
+import { SuspenseWrapper } from "@/components/ui/SuspenseWrapper";
 import { RouterConfig } from "@/routes/RouterConfig";
 
 function App() {

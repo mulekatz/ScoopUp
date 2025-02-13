@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ReceiptData } from "./type";
 import { backendURL } from "@/config/";
-import { ImageValidationResponse } from "@/components/home/Submission/Validation/ValidationResult";
+import { SubmissionResponse } from "@/features/scoop/components/SubmissionResponse/SubmissionResponse.types";
 
-export const submitReceipt = async (data: ReceiptData): Promise<ImageValidationResponse> => {
+export const submitReceipt = async (data: ReceiptData): Promise<SubmissionResponse> => {
   try {
     const response = await axios.post(`${backendURL}/api/submitReceipt`, data, {
       headers: {

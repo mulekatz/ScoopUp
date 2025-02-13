@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { ImageValidationResponse } from "@/components/home/Submission/Validation/ValidationResult/ValidationResult.types";
+import { SubmissionResponse } from "@/features/scoop/components/SubmissionResponse/SubmissionResponse.types";
 
 interface useSubmissionState {
   isLoading: boolean;
-  response: ImageValidationResponse | null;
+  response: SubmissionResponse | null;
   setIsLoading: (isLoading: boolean) => void;
-  setResponse: (response: ImageValidationResponse | null) => void;
+  setResponse: (response: SubmissionResponse | null) => void;
   clearAll: () => void;
 }
 

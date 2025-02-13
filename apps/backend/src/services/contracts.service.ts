@@ -18,7 +18,6 @@ export class ContractsService {
         await scoopUpContract.transact.registerValidSubmission(submission.address, Units.parseUnits(REWARD_AMOUNT, Units.ether))
       ).wait();
       isSuccess = !result.reverted;
-      console.log('result', result);
     } catch (error) {
       console.log('Error', error);
     }

@@ -19,40 +19,41 @@ export class OpenAIHelper {
       dangerouslyAllowBrowser: true, // TODO: Check if this is necessary
     });
 
-  public askChatGPTAboutImage = async ({ firstImage, secondImage, thirdImage, maxTokens = 350, prompt }: { firstImage: string; secondImage: string; thirdImage: string; prompt: string; maxTokens?: number }) =>
-    this.openai.chat.completions.create({
+  public askChatGPTAboutImage = async ({
+    firstImage,
+    secondImage,
+    thirdImage,
+    maxTokens = 350,
+    prompt,
+  }: {
+    firstImage?: string | null;
+    secondImage?: string | null;
+    thirdImage?: string | null;
+    prompt: string;
+    maxTokens?: number;
+  }) => {
+    // Erstelle ein Array nur mit den vorhandenen Bildern
+    const images = [firstImage, secondImage, thirdImage]
+      .filter((img): img is string => !!img)
+      .map(img => ({
+        type: 'image_url' as const,
+        image_url: { url: img },
+      }));
+
+    // Kombiniere Text und Bilder
+    const content = [{ type: 'text' as const, text: prompt }, ...images];
+
+    return this.openai.chat.completions.create({
       model: 'gpt-4o',
       max_tokens: maxTokens,
       messages: [
         {
           role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: prompt,
-            },
-            {
-              type: 'image_url',
-              image_url: {
-                url: firstImage,
-              },
-            },
-            {
-              type: 'image_url',
-              image_url: {
-                url: secondImage,
-              },
-            },
-            {
-              type: 'image_url',
-              image_url: {
-                url: thirdImage,
-              },
-            },
-          ],
+          content,
         },
       ],
     });
+  };
 
   public getResponseJSONString = (response: ChatCompletion) => response.choices[0].message.content;
 

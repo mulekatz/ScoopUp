@@ -12,6 +12,7 @@ interface ImageState {
   setThirdImage: (image: string) => void;
   clearImages: () => void;
   setIsExpired: (isExpired: boolean) => void;
+  clearImage: (imageType: "first" | "second" | "third") => void;
 }
 
 // TTL in Millisekunden (z.B. 1 Stunde)
@@ -75,6 +76,13 @@ export const useImageStore = create<ImageState>()(
           timestamp: null,
           isExpired: false,
         }),
+      clearImage: (imageType: "first" | "second" | "third") =>
+        set((state) => ({
+          ...state,
+          [imageType === "first" ? "firstImage" : 
+           imageType === "second" ? "secondImage" : 
+           "thirdImage"]: null,
+        })),
       setIsExpired: (value: boolean) => set({ isExpired: value }),
     }),
     {
