@@ -29,7 +29,7 @@ export const ValidationResponse = () => {
         )}
       </p>
       <div className="flex flex-col items-center justify-center">
-        {responseValidation.step === ValidationStep.STEP2 && (
+        {responseValidation.step === ValidationStep.STEP2 && !responseValidation.isValid && (
           <div className="flex flex-row gap-2 text-sm">
             <p>Image Quality: </p>
             <p
@@ -55,7 +55,7 @@ export const ValidationResponse = () => {
             </p>
           </div>
         )}
-        {responseValidation.step === ValidationStep.STEP2 &&
+        {responseValidation.step === ValidationStep.STEP2 && !responseValidation.isValid &&
           responseValidation.locationMatch !== undefined && (
             <div className="flex flex-row gap-2 text-sm">
               <p>Location Match:</p>
