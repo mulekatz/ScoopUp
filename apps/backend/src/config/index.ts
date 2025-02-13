@@ -15,3 +15,10 @@ export const { NETWORK_URL, NETWORK_TYPE } = validatedEnv;
 export const { REWARD_AMOUNT } = validatedEnv;
 
 export const ADMIN_PRIVATE_KEY = Mnemonic.toPrivateKey(ADMIN_MNEMONIC.split(' '));
+
+export const MIN_VALIDITY_FACTOR = {
+  first: 0.8,
+  second: 0.6,
+  third: 0.8,
+  location: 0.8,
+} as const;
